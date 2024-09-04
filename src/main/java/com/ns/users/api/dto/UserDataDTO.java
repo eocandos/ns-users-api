@@ -1,9 +1,11 @@
-package com.ns.users.api.model;
+package com.ns.users.api.dto;
 
-import jakarta.persistence.*;
+import com.ns.users.api.model.Phone;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,11 +14,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
 @Data
 @NoArgsConstructor
-@Table(name="Users")
-public class User {
+public class UserDataDTO {
 
   @Id
   @GeneratedValue(generator = "UUID")
@@ -24,20 +24,13 @@ public class User {
   private UUID userId;
 
   @NaturalId
-  @Column(unique = true)
   private String email;
 
-  @NonNull
   private String password;
-
-  private String token;
 
   private String name;
 
-  @OneToMany(cascade = CascadeType.ALL)
   private List<Phone> phones;
-
-  private boolean isActive;
 
   @CreationTimestamp
   private Date created;
@@ -45,6 +38,14 @@ public class User {
   @UpdateTimestamp
   private Date modified;
 
-  @CreationTimestamp
-  private Date lastLogin;
+  @Override
+  public String toString() {
+    return "User{" +
+            "userId=" + userId +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", name='" + name + '\'' +
+            '}';
+  }
+
 }

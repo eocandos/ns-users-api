@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:usersapi
+    username: admin
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        id:
+          new_generator_mappings: false
+server:
+   port: 8080
