@@ -39,6 +39,9 @@ public class User {
 
   private boolean isActive;
 
+  @ElementCollection(fetch = FetchType.EAGER)
+  List<UserRole> appUserRoles;
+
   @CreationTimestamp
   private Date created;
 

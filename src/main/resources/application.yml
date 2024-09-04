@@ -14,3 +14,7 @@ spring:
           new_generator_mappings: false
 server:
    port: 8080
+security:
+  jwt:
+    token:
+      secret-key: secret-key

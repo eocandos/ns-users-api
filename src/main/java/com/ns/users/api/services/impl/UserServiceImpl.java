@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,10 +28,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(User appUser) {
         if (!userRepository.existsByEmail(appUser.getEmail())) {
+            appUser.setActive(true);
             return userRepository.save(appUser);
         } else {
             throw new CustomException(ErrorMessages.ERROR_EMAIL_ALREADY_EXIST, HttpStatus.FORBIDDEN);
         }
+    }
+
+    @Override
+    public void updateStatusUser(String email, String token) {
+        User oldUser = userRepository.findByEmail(email);
+        oldUser.setToken(token);
+        oldUser.setLastLogin(new Date());
+        userRepository.save(oldUser);
     }
 
 }

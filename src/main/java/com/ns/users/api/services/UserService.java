@@ -7,4 +7,5 @@ public interface UserService {
 
     List<User> getAll();
     User register(User user);
+    void updateStatusUser(String email, String token);
 }
