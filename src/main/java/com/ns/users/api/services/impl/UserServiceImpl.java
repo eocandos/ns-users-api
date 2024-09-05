@@ -1,5 +1,6 @@
 package com.ns.users.api.services.impl;
 
+import com.ns.users.api.config.EmailValidationConfig;
 import com.ns.users.api.config.PasswordValidationConfig;
 import com.ns.users.api.constants.ErrorMessages;
 import com.ns.users.api.exception.CustomException;
@@ -29,6 +30,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordValidationConfig passwordValidationConfig;
+    @Autowired
+    private EmailValidationConfig emailValidationConfig;
 
     @Override
     public List<User> getAll() {
@@ -38,6 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(User appUser) {
 
+        validateEmail(appUser.getEmail());
         validatePassword(appUser.getPassword());
 
         if (userRepository.existsByEmail(appUser.getEmail())) {
@@ -62,6 +66,13 @@ public class UserServiceImpl implements UserService {
         String regex = passwordValidationConfig.getPasswordRegex();
         if (!StringUtils.hasText(password) || !password.matches(regex)) {
             throw new CustomException(ErrorMessages.ERROR_PASSWORD_DOES_NOT_MEET_THE_REQUIRED_FORMAT, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public void validateEmail(String email) {
+        String regex = emailValidationConfig.getEmailRegex();
+        if (!StringUtils.hasText(email) || !email.matches(regex)) {
+            throw new CustomException(ErrorMessages.ERROR_INCORRECT_EMAIL_FORMAT, HttpStatus.BAD_REQUEST);
         }
     }
 
