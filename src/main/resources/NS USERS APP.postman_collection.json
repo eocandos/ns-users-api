@@ -16,7 +16,36 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"email\":\"user2@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps16789*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nuevo Usuario Correo Incorrecto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"user123\",\r\n   \"password\":\"Geps129*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,8 +112,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"user388@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/api/auth/login?email=user1@email.com&password=Geps123456789*",
+							"raw": "http://localhost:8080/api/auth/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -98,11 +136,13 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "user1@email.com"
+									"value": "user1@email.com",
+									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "Geps123456789*"
+									"value": "Geps123456789*",
+									"disabled": true
 								}
 							]
 						}
@@ -116,7 +156,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps16789*\",\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
