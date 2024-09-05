@@ -4,10 +4,12 @@ import com.ns.users.api.constants.ErrorMessages;
 import com.ns.users.api.exception.CustomException;
 import com.ns.users.api.model.User;
 import com.ns.users.api.repository.UserRepository;
+import com.ns.users.api.security.JwtTokenProvider;
 import com.ns.users.api.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public List<User> getAll() {
@@ -27,12 +32,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User appUser) {
-        if (!userRepository.existsByEmail(appUser.getEmail())) {
-            appUser.setActive(true);
-            return userRepository.save(appUser);
-        } else {
+
+        if (userRepository.existsByEmail(appUser.getEmail())) {
             throw new CustomException(ErrorMessages.ERROR_EMAIL_ALREADY_EXIST, HttpStatus.FORBIDDEN);
         }
+
+        appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+        appUser.setActive(true);
+        User savedUser = userRepository.save(appUser);
+
+        savedUser.setToken(jwtTokenProvider.createToken(appUser.getEmail(), appUser.getAppUserRoles()));
+        return savedUser;
     }
 
     @Override
