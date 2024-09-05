@@ -40,10 +40,10 @@ public class UserServiceImpl implements UserService {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
         appUser.setActive(true);
         appUser.setToken(jwtTokenProvider.createToken(appUser.getEmail(), appUser.getAppUserRoles()));
-        User savedUser = userRepository.save(appUser);
-
-        return savedUser;
+        return userRepository.save(appUser);
     }
+
+
 
     @Override
     public void updateStatusUser(String email, String token) {

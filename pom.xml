@@ -85,6 +85,12 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.0.2</version> <!-- Asegúrate de tener una versión compatible -->
+		</dependency>
+
 		<!-- ModelMapper (para mapear DTOs a entidades) -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>

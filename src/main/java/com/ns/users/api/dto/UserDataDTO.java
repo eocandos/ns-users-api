@@ -3,6 +3,7 @@ package com.ns.users.api.dto;
 import com.ns.users.api.model.Phone;
 import com.ns.users.api.model.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,6 +24,7 @@ public class UserDataDTO {
   private UUID userId;
 
   @NaturalId
+  @Pattern(regexp = "^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
   private String email;
 
   private String password;
