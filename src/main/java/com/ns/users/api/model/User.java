@@ -8,7 +8,6 @@ import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
-import jakarta.validation.constraints.Pattern;
 
 import java.util.Date;
 import java.util.List;
@@ -28,14 +27,9 @@ public class User {
   @NaturalId
   @Column(unique = true)
   @NotEmpty
-  @Pattern(regexp = "^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
   private String email;
 
   @NonNull
-  @Pattern(
-          regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{4,12}$",
-          message = "password must be min 4 and max 12 length containing at least 1 uppercase, 1 lowercase, 1 special character and 1 digit"
-  )
   private String password;
 
   private String token;

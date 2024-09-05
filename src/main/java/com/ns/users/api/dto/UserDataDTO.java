@@ -24,7 +24,6 @@ public class UserDataDTO {
   private UUID userId;
 
   @NaturalId
-  @Pattern(regexp = "^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
   private String email;
 
   private String password;
