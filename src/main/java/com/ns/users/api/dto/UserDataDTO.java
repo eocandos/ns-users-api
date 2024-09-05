@@ -1,9 +1,8 @@
 package com.ns.users.api.dto;
 
 import com.ns.users.api.model.Phone;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.ns.users.api.model.UserRole;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,6 +30,8 @@ public class UserDataDTO {
   private String name;
 
   private List<Phone> phones;
+
+  private List<UserRole> appUserRoles;
 
   @CreationTimestamp
   private Date created;
