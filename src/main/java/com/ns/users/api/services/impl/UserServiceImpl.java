@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
 
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
         appUser.setActive(true);
+        appUser.setToken(jwtTokenProvider.createToken(appUser.getEmail(), appUser.getAppUserRoles()));
         User savedUser = userRepository.save(appUser);
 
-        savedUser.setToken(jwtTokenProvider.createToken(appUser.getEmail(), appUser.getAppUserRoles()));
         return savedUser;
     }
 
