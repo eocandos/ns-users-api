@@ -27,11 +27,11 @@ La aplicación es empaquetada como un jar con un Tomcat embebido. Por ende no es
 * Una vez construido el jar es posible correr la aplicación empleando alguno de los siguientes metodos:
     Ingresar a la carpeta target/  con cd .\target\ y luego:
 ```
-        java -jar .\users.api-0.0.1-SNAPSHOT.jar
+java -jar .\users.api-0.0.1-SNAPSHOT.jar
 ```
 O directamente en la carpeta raiz del proyecto:
 ```
-        mvn spring-boot:run
+mvn spring-boot:run
 ```
 
 Una vez ejecutada debería aparecer algo como esto en la consola:
@@ -112,5 +112,14 @@ http://localhost:8080/h2-console
 #### Consulta de Usuarios creados
 ![ui-h2-console-db](https://github.com/user-attachments/assets/d6e1a394-6a26-464a-acb7-4fffe50c6e28)
 
+### Acceso al contrato Swagger generado automaticamente
+```
+http://localhost:8080/swagger-ui/index.html
+```
+![swagger-doc](https://github.com/user-attachments/assets/0b52ffa5-13dc-45b0-aead-2a37a802b097)
+```
+http://localhost:8080/v3/api-docs
+```
+![swagger-doc-2](https://github.com/user-attachments/assets/7b43a9fa-017c-45db-b443-8631b755978e)
 
 
