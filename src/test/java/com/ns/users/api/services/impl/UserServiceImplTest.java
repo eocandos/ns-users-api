@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
@@ -97,6 +98,26 @@ public class UserServiceImplTest {
         assertEquals(savedUserDTO, result);
         verify(userRepository).existsByEmail(userDataDTO.getEmail());
         verify(userRepository).save(user);
+    }
+
+    @Test
+    public void testUpdateStatusUser() {
+        // Arrange
+        String email = "test@example.com";
+        String token = "generatedToken";
+        User existingUser = new User();
+        existingUser.setEmail(email);
+
+        // Simular comportamientos
+        when(userRepository.findByEmail(email)).thenReturn(existingUser);
+
+        // Act
+        userService.updateStatusUser(email, token);
+
+        // Assert
+        assertEquals(token, existingUser.getToken());
+        assertNotNull(existingUser.getLastLogin());
+        verify(userRepository).save(existingUser);
     }
 
 }
