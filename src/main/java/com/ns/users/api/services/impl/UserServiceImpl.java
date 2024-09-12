@@ -9,7 +9,6 @@ import com.ns.users.api.model.User;
 import com.ns.users.api.repository.UserRepository;
 import com.ns.users.api.security.JwtTokenProvider;
 import com.ns.users.api.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,8 +21,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider, ModelMapper modelMapper, PasswordValidationConfig passwordValidationConfig, EmailValidationConfig emailValidationConfig) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.modelMapper = modelMapper;
+        this.passwordValidationConfig = passwordValidationConfig;
+        this.emailValidationConfig = emailValidationConfig;
+    }
 
     @Autowired
     private final UserRepository userRepository;
