@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b75622cd-fbe0-45ee-90dc-50c28c9b465d",
+		"_postman_id": "73d0ccd7-4a4c-4b97-8c4e-28bc41cf52b4",
 		"name": "NS USERS APP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "342689"
@@ -66,11 +66,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Nuevo Usuario contraseña formato inesperado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"123\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "CONSUNTAR",
+			"name": "CONSULT",
 			"item": [
 				{
 					"name": "(USER) Get users",
@@ -79,14 +108,7 @@
 							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "apiKey",
-								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpYXQiOjE3MTA5NjAxNjEsImV4cCI6MTcxMDk2MDQ2MX0.A61VvLDvKXIisYQjT095REImV_WQwqL87e2Oain8Pn0",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:8080/api/users",
 							"protocol": "http",
