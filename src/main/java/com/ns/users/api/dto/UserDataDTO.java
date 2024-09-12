@@ -31,6 +31,8 @@ public class UserDataDTO {
 
   private List<Phone> phones;
 
+  private boolean isActive;
+
   private List<UserRole> appUserRoles;
 
   @CreationTimestamp

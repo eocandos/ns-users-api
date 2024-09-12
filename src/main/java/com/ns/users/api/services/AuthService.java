@@ -1,9 +1,9 @@
 package com.ns.users.api.services;
 
-import com.ns.users.api.model.User;
+import com.ns.users.api.dto.UserDataDTO;
 
 public interface AuthService {
 
-    String login(User appUser);
+    String login(UserDataDTO userDataDTO);
 
 }

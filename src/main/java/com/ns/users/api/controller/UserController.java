@@ -1,7 +1,6 @@
 package com.ns.users.api.controller;
 
 import com.ns.users.api.dto.UserDataDTO;
-import com.ns.users.api.model.User;
 import com.ns.users.api.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -20,13 +19,15 @@ public class UserController {
     private final ModelMapper modelMapper;
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> geUsers() {
-        return ResponseEntity.ok(userService.getAll());
+    public ResponseEntity<List<UserDataDTO>> getUsers() {
+        List<UserDataDTO> users = userService.getAll();
+        return ResponseEntity.ok(users);
     }
 
     @PostMapping("/users")
-    public User register(@RequestBody UserDataDTO user) {
-        return userService.register(modelMapper.map(user, User.class));
+    public ResponseEntity<UserDataDTO> register(@RequestBody UserDataDTO userDataDTO) {
+        UserDataDTO registeredUserDTO = userService.register(userDataDTO);
+        return ResponseEntity.ok(registeredUserDTO);
     }
 
 }

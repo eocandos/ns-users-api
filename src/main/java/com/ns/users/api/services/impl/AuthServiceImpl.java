@@ -1,8 +1,8 @@
 package com.ns.users.api.services.impl;
 
 import com.ns.users.api.constants.ErrorMessages;
+import com.ns.users.api.dto.UserDataDTO;
 import com.ns.users.api.exception.CustomException;
-import com.ns.users.api.model.User;
 import com.ns.users.api.repository.UserRepository;
 import com.ns.users.api.security.JwtTokenProvider;
 import com.ns.users.api.services.AuthService;
@@ -28,10 +28,10 @@ public class AuthServiceImpl implements AuthService {
   public UserService userService;
 
   @Override
-  public String login(User appUser) {
+  public String login(UserDataDTO userDataDTO) {
     try {
-      String email = appUser.getEmail();
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, appUser.getPassword()));
+      String email = userDataDTO.getEmail();
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, userDataDTO.getPassword()));
       String token = jwtTokenProvider.createToken(email,
               userRepository.findByEmail(email).getAppUserRoles());
       userService.updateStatusUser(email, token);
