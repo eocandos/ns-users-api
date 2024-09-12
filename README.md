@@ -122,4 +122,18 @@ http://localhost:8080/v3/api-docs
 ```
 ![swagger-doc-2](https://github.com/user-attachments/assets/7b43a9fa-017c-45db-b443-8631b755978e)
 
+### Creación Pruebas Unitarias
+```
+mvn test
+mvn surefire-report:report
+```
+El primer comando ejecuta las pruebas, y el segundo comando genera el reporte HTML.
+
+El reporte HTML se genera en el directorio target/site de tu proyecto. Puedes abrir el archivo surefire-report.html en un navegador para ver el reporte.
+
+La ruta completa al archivo suele ser:
+```
+target/site/surefire-report.html
+```
+
 
